@@ -13,19 +13,19 @@ from flask import Flask,render_template,request,jsonify,url_for, flash, redirect
 from db import *
 app = Flask(__name__)
 
-@app.route("/")
-@app.route("/home")
-def index():
-    now = datetime.datetime.now()
-    current_date = now.strftime("%d-%m-%Y")
-    current_time = now.strftime("%H:%M")
-    if now.hour < 12:
-        greeting = 'good morning'
-    elif now.hour > 12 and now.hour < 17:
-        greeting = 'good afternoon'
-    else:
-        greeting = 'hello'
-    return render_template('index.html', title='home', **locals())
+#@app.route("/")
+#@app.route("/home")
+#def index():
+#    now = datetime.datetime.now()
+#    current_date = now.strftime("%d-%m-%Y")
+#    current_time = now.strftime("%H:%M")
+#    if now.hour < 12:
+#        greeting = 'good morning'
+#    elif now.hour > 12 and now.hour < 17:
+#        greeting = 'good afternoon'
+#    else:
+#        greeting = 'hello'
+#    return render_template('index.html', title='home', **locals())
 
 
 @app.route("/", methods=["GET","POST"])
@@ -40,11 +40,11 @@ def addtasks():
     else:
         greeting = 'hello'
     if request.method == 'GET':
+        
       return render_template('index.html', title='todoss', **locals())
 
     if request.method == 'POST':
       id = request.form['delete']
-
 
       conn = getDb()
 
@@ -52,6 +52,7 @@ def addtasks():
 
       cursor.execute('delete from todos where id = ?',(id,))
       conn.commit()
+
 
       return render_template('index.html', title='All todos', **locals())
 
@@ -64,6 +65,8 @@ def asktasks():
 
 @app.route("/complete",methods=["POST"])
 def addtask():
+    
+    
     conn = getDb()
     cursor = conn.cursor()
     title=request.form["task_title"]
@@ -78,6 +81,9 @@ def addtask():
     date = request.form["date"]
     cursor.execute('INSERT INTO todos(title, description, important, status, date) VALUES(?,?,?,?,?)',( title, description, important,status,date))
     conn.commit()
+    
+    
+    
     now = datetime.datetime.now()
     current_date = now.strftime("%d-%m-%Y")
     current_time = now.strftime("%H:%M")
