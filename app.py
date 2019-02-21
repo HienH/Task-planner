@@ -92,10 +92,10 @@ def all_todo():
 
     
 
-@app.route('/update/<int:id>', methods=['GET', 'POST'])        
-def update_todo():
-    return render_template('update.html')
-
+#@app.route('/update/<int:id>', methods=['GET', 'POST'])        
+#def update_todo():
+#    return render_template('update.html')
+#
 
 if __name__ == '__main__':
     app.run(debug =True)
