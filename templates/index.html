@@ -1,0 +1,62 @@
+<!DOCTYPE >
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Page Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+  <script src="main.js"></script>
+</head>
+
+<body>
+  <h1>All todos</h1>
+  <form action="/addtask">
+    <input type="submit" value="add task" />
+  </form>
+
+
+  <h3 class='home-page-h3'>To-Do List</h3>
+
+  <span id='listtasks'>
+  </span>
+
+
+</body>
+
+<script type="text/javascript">
+  url = 'http://127.0.0.1:5000/todos'
+  fetch(url)
+    .then(response => response.json())
+    .then((data) => {
+      console.log(data)
+
+      let task = ''
+      data.forEach((todo) => {
+        task +=
+          ` 
+        <ul>
+        <li>
+        ID: ${todo.id}
+        Title : ${todo.title}
+           Description :  ${todo.description}
+          if ${todo.important} == 1
+        ${todo.status}
+        ${todo.data}
+</li>
+
+        </ul>
+        <form action="/" method="POST" > 
+        <button type="submit" name="delete" value=${todo.id}> Delete</button>
+         </form>
+          
+
+        `;
+      });
+      document.getElementById('listtasks').innerHTML = task
+    })
+</script>
+
+
+</html>

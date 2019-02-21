@@ -1,0 +1,245 @@
+/*--------------------------------RESET CSS------------------------------------*/
+
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/*--------------------------------CUSTOM CSS------------------------------------*/
+html {
+	height: 200vh;
+}
+
+body {
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  background: #FFE8E1;
+}
+
+main {
+  width: 90%;
+  margin: 0 auto;
+}
+
+header {
+  height: 600px;
+  background: rgba(0, 0, 0, 0.6);
+  background-image: url('../images/hero.jpg');
+  background-blend-mode: overlay;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+nav {
+	height: 75px;
+	background: rgba(91, 75,73, 0.5);
+	border-bottom: 2px solid #FFE8E1;
+}
+
+nav ul li {
+	display: inline;
+}
+
+nav ul li a {
+	text-decoration: none;
+	color: #FFE8E1;
+	float: right;
+	margin-right: 50px;
+	margin-top: 30px;
+
+}
+
+nav ul li a:hover {
+	color: #DB93B0;
+}
+
+
+img {
+	margin-top: 25px;
+	float:left;
+	margin-left: 100px;
+	margin-top: 145px;
+	height: 200px;
+	width: auto;
+}
+
+nav img {
+	height: 65px;
+	float: left;
+	margin-left: 50px;
+	margin-top: 5px;
+}
+
+
+#headers {
+	float:right;
+	text-align: right;
+	margin-right: 10px;
+	margin-top: 150px;
+}
+
+h1 {
+  /* padding-top: 250px; */
+  width: 100%;
+  font-size: 4em;
+  color:#FFE8E1;
+	margin-bottom: 10px;
+}
+
+h2 {
+  color: #FFE8E1;
+  font-size: 2.9em;
+	font-weight: bold;
+}
+
+h3 {
+  padding: 20px 0px;
+  color: #FFE8E1;
+	font-size: 2.5em;
+}
+
+.home-page-h3 {
+	color: #6B717E;
+}
+
+form {
+	padding: 10px 0px;
+}
+
+
+#new-task-form {
+	display: none;
+	background: #F7BFB4;
+	width: 50%;
+	margin: 0 auto;
+}
+
+#new-task-form input{
+	display: block;
+	text-align: center;
+	margin: 5px auto;
+	width: 40%;
+}
+
+#task {
+	padding: 20px;
+	margin: 10px 0px;
+	background:  #5B4B49;
+	color: #FFE8E1;
+}
+
+#remove-task-button {
+	width: 30%;
+	background: #0C120C;
+	color: #FFE8E1;
+	border: none;
+	padding: 10px;
+	margin-top: 20px auto;
+}
+
+#remove-task-button:hover {
+	background: #FFE8E1;
+	color: #0C120C;
+}
+
+#new-task-button {
+	margin: 0 auto;
+	margin-top: 40px;
+	background: #5B4B49;
+	color: #FFE8E1;
+	border: none;
+	width: 50%;
+}
+
+#new-task-button h3 {
+	color: #FFE8E1;
+	padding: 5px;
+}
+
+#new-task-button:hover {
+	background: #F7BFB4;
+}
+
+#new-task-button h3:hover {
+	color: #5B4B49;
+}
+
+#new-task-form #submit {
+	background: black;
+	color: #FFE8E1;
+	border: none;
+	padding: 10px;
+	margin-top: 10px;
+}
+
+#new-task-form #submit:hover {
+	background: #6B717E;
+}
+
+@media screen and (min-width: 480px) {
+	.newtask {
+		margin-top: 50px;
+		float: left;
+		width: 50%;
+	}
+
+	#list-tasks {
+		float: right;
+		width: 50%;
+
+	}
+
+	footer {
+		clear: both;
+	}
+}
+
+
+
+footer {
+	height: 100px;
+}
