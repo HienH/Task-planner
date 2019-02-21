@@ -1,18 +1,13 @@
-<!DOCTYPE >
-<html>
+{% extends "layout.html"%}
 
-<head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Page Title</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-  <script src="main.js"></script>
-</head>
+{% block content %}
 
-<body>
-  <h1>added into db</h1>
+  <h1 id='complete-h1'>your task has been added</h1>
 
-</body>
+  <button type="button" name="button" class='task-button'>see all tasks</button>
 
-</html>
+  <script type="text/javascript">
+    document.getElementById('listtasks').innerHTML = task
+  </script>
+
+{% endblock %}

@@ -7,7 +7,7 @@ Created on Wed Feb 20 23:49:50 2019
 """
 import sqlite3
 import random
-
+import datetime
 import requests
 from flask import Flask,render_template,request,jsonify,url_for, flash, redirect
 from db import *
@@ -16,26 +16,35 @@ app = Flask(__name__)
 @app.route("/")
 @app.route("/home")
 def index():
-    return render_template('index.html', title='home')
+    now = datetime.datetime.now()
+    current_date = now.strftime("%d-%m-%Y")
+    current_time = now.strftime("%H:%M")
+    if now.hour < 12:
+        greeting = 'good morning'
+    elif now.hour > 12 and now.hour < 17:
+        greeting = 'good afternoon'
+    else:
+        greeting = 'good evening'
+    return render_template('index.html', title='home', **locals())
 
 
 @app.route("/", methods=["GET","POST"])
 def addtasks():
-   if request.method == 'GET':
-      return render_template('index.html', title='todoss')
+    if request.method == 'GET':
+      return render_template('index.html', title='todoss', **locals())
 
-   if request.method == 'POST':
-      id = request.form['delete']  
-           
-       
+    if request.method == 'POST':
+      id = request.form['delete']
+
+
       conn = getDb()
 
       cursor = conn.cursor()
 
       cursor.execute('delete from todos where id = ?',(id,))
       conn.commit()
-        
-      return render_template('index.html', title='All todos')
+
+      return render_template('index.html', title='All todos', **locals())
 
 
 
@@ -47,7 +56,7 @@ def asktasks():
 @app.route("/complete",methods=["POST"])
 def addtask():
     conn = getDb()
-    cursor = conn.cursor()   
+    cursor = conn.cursor()
     title=request.form["task_title"]
     description=request.form["description"]
     result = request.form.getlist("checkbox")
@@ -58,15 +67,15 @@ def addtask():
     important = result
     status = 0
     date = request.form["date"]
-    cursor.execute('INSERT INTO todos(title, description, important, status, date) VALUES(?,?,?,?,?)',( title, description, important,status,date)) 
+    cursor.execute('INSERT INTO todos(title, description, important, status, date) VALUES(?,?,?,?,?)',( title, description, important,status,date))
     conn.commit()
-    return render_template('index.html', title='todoss')
+    return render_template('complete.html', title='todoss')
 
 
 @app.route("/todos", methods = ["GET"])
 def all_todo():
    conn = getDb()
-   cursor = conn.cursor() 
+   cursor = conn.cursor()
    query = cursor.execute("SELECT * FROM todos")
    results = query.fetchall()
    jsondict = []
@@ -79,7 +88,7 @@ def all_todo():
             'status' : row[4],
             'data' : row[5]
             }
-        
+
        jsondict.append(todo)
    conn.close()
    return jsonify(jsondict)
@@ -90,15 +99,12 @@ def all_todo():
 #    id = request.form['hello'].value
 #    return redirect("/")
 
-    
 
-#@app.route('/update/<int:id>', methods=['GET', 'POST'])        
+
+#@app.route('/update/<int:id>', methods=['GET', 'POST'])
 #def update_todo():
 #    return render_template('update.html')
 #
 
 if __name__ == '__main__':
     app.run(debug =True)
-
-
-   

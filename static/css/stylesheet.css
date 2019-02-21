@@ -57,11 +57,10 @@ html {
 body {
   text-align: center;
   font-family: 'Montserrat', sans-serif;
-  background: #FFE8E1;
+  background: white;
 }
 
 main {
-  width: 90%;
   margin: 0 auto;
 }
 
@@ -72,6 +71,38 @@ header {
   background-blend-mode: overlay;
   background-size: cover;
   background-repeat: no-repeat;
+}
+
+h1 {
+  padding-top: 150px;
+  width: 100%;
+  font-size: 4em;
+  color:#FFE8E1;
+	margin-bottom: 10px;
+}
+
+#complete-h1 {
+	color: black;
+}
+
+h2 {
+  color: #FFE8E1;
+  font-size: 2.9em;
+	font-weight: bolder;
+}
+
+h3 {
+	color: black;
+	padding: 20px 0px;
+	font-size: 2.5em;
+}
+
+h3.headers {
+  padding: 20px 0px;
+  color: #FFE8E1;
+	font-size: 2.5em;
+	letter-spacing: 3px;
+	font-weight: bold;
 }
 
 nav {
@@ -114,132 +145,15 @@ nav img {
 	margin-top: 5px;
 }
 
-
-#headers {
-	float:right;
-	text-align: right;
-	margin-right: 10px;
-	margin-top: 150px;
-}
-
-h1 {
-  /* padding-top: 250px; */
-  width: 100%;
-  font-size: 4em;
-  color:#FFE8E1;
-	margin-bottom: 10px;
-}
-
-h2 {
-  color: #FFE8E1;
-  font-size: 2.9em;
-	font-weight: bold;
-}
-
-h3 {
-  padding: 20px 0px;
-  color: #FFE8E1;
-	font-size: 2.5em;
-}
-
-.home-page-h3 {
-	color: #6B717E;
-}
-
-form {
-	padding: 10px 0px;
-}
-
-
-#new-task-form {
-	display: none;
-	background: #F7BFB4;
-	width: 50%;
-	margin: 0 auto;
-}
-
-#new-task-form input{
-	display: block;
-	text-align: center;
-	margin: 5px auto;
-	width: 40%;
-}
-
-#task {
-	padding: 20px;
-	margin: 10px 0px;
-	background:  #5B4B49;
-	color: #FFE8E1;
-}
-
-#remove-task-button {
-	width: 30%;
-	background: #0C120C;
-	color: #FFE8E1;
-	border: none;
-	padding: 10px;
-	margin-top: 20px auto;
-}
-
-#remove-task-button:hover {
+#list-tasks {
 	background: #FFE8E1;
-	color: #0C120C;
+	padding: 20px;
+	margin: 50px 0px;
 }
-
-#new-task-button {
-	margin: 0 auto;
-	margin-top: 40px;
-	background: #5B4B49;
-	color: #FFE8E1;
-	border: none;
-	width: 50%;
-}
-
-#new-task-button h3 {
-	color: #FFE8E1;
-	padding: 5px;
-}
-
-#new-task-button:hover {
-	background: #F7BFB4;
-}
-
-#new-task-button h3:hover {
-	color: #5B4B49;
-}
-
-#new-task-form #submit {
-	background: black;
-	color: #FFE8E1;
-	border: none;
-	padding: 10px;
-	margin-top: 10px;
-}
-
-#new-task-form #submit:hover {
-	background: #6B717E;
-}
-
-@media screen and (min-width: 480px) {
-	.newtask {
-		margin-top: 50px;
-		float: left;
-		width: 50%;
-	}
-
-	#list-tasks {
-		float: right;
-		width: 50%;
-
-	}
-
-	footer {
-		clear: both;
-	}
-}
-
-
 
 footer {
-	height: 100px;
+	position: fixed;
+	bottom: 0;
+	text-align: center;
+	margin: 0 auto;
 }

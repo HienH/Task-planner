@@ -1,19 +1,24 @@
-<!DOCTYPE >
-<html>
-
-<head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Page Title</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-  <script src="main.js"></script>
-</head>
+{% extends "layout.html"%}
+{% block title %}Taskify{% endblock %}
+{% block content %}
 
 <body>
-  <h1>All todos</h1>
+  <header>
+    <nav>
+      <ul>
+        <li><img src="../static/images/logo.png" alt="company logo"></li>
+        <li><a href="#footer">contact us</a></li>
+      </ul>
+    </nav>
+    <h1 class='headers'>{{greeting}}</h1>
+    <h2 class='headers'>welcome to your to-do list</h2>
+    <h3 class='headers'>{{current_date}} | {{current_time}}</h3>
+  </header>
+<main>
+
+
   <form action="/addtask">
-    <input type="submit" value="add task" />
+    <input type="submit" value="add new task" />
   </form>
 
 
@@ -21,6 +26,14 @@
 
   <span id='listtasks'>
   </span>
+</main>
+
+<footer>
+  <h4>Contact Us</h4>
+  <p>81 Newgate St, London EC1A 7AJ</p>
+  <p>01234 567 890</p>
+  <p>email@taskify.com</p>
+</footer>
 
 
 </body>
@@ -35,16 +48,17 @@
       let task = ''
       data.forEach((todo) => {
         task +=
-          ` 
+          `
+        <div id='list-tasks'>
         <ul>
         <li>
-        ID: ${todo.id} 
+        ID: ${todo.id}
         <br/>
 
-        Title : ${todo.title} 
+        Title : ${todo.title}
         <br/>
 
-           Description :  ${todo.description} 
+           Description :  ${todo.description}
           <br/>
           important : ${todo.important}
           <br/>
@@ -58,10 +72,10 @@
 </li>
 
         </ul>
-        <form action="/" method="POST" > 
+        <form action="/" method="POST" >
         <button type="submit" name="delete" value=${todo.id}> Delete</button>
          </form>
-          
+         </div>
 
         `;
       });
@@ -69,5 +83,4 @@
     })
 </script>
 
-
-</html>
+{% endblock %}
