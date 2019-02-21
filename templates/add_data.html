@@ -5,7 +5,7 @@
 
 {% block content %}
 
-<h1>add a new task</h1>
+<h1>Add a new task</h1>
 
 <body>
     <form method="post" action="/complete" id='add-task-form'>
@@ -14,10 +14,10 @@
         <label for="description">Description:</label>
         <input type="text" name="description" value="">
         <label for="checkbox">Important?</label>
-        <input type="checkbox" name="checkbox" value="checked">
+        <input type="checkbox" name="checkbox" value="checked" class="checkbox">
         <label for="date">Due Date:</label>
         <input type="date" name="date">
-        <input type="submit" value="Add task" class='add-task-button'>
+        <input type="submit" value="Add task" id="add-task">
         <button type="button" name="home" class="home-button">See all tasks</button>
     </form>
 

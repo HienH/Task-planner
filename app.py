@@ -61,9 +61,9 @@ def addtask():
     description=request.form["description"]
     result = request.form.getlist("checkbox")
     if result != []:
-        result = 1
+        result = 'Yes'
     else:
-        result= 0
+        result= 'No'
     important = result
     status = 0
     date = request.form["date"]
