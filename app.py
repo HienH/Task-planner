@@ -24,7 +24,7 @@ def index():
     elif now.hour > 12 and now.hour < 17:
         greeting = 'good afternoon'
     else:
-        greeting = 'good evening'
+        greeting = 'hello'
     return render_template('index.html', title='home', **locals())
 
 
@@ -69,7 +69,7 @@ def addtask():
     date = request.form["date"]
     cursor.execute('INSERT INTO todos(title, description, important, status, date) VALUES(?,?,?,?,?)',( title, description, important,status,date))
     conn.commit()
-    return render_template('complete.html', title='todoss')
+    return render_template('complete.html', **locals())
 
 
 @app.route("/todos", methods = ["GET"])

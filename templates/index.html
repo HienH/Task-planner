@@ -4,12 +4,6 @@
 
 <body>
   <header>
-    <nav>
-      <ul>
-        <li><img src="../static/images/logo.png" alt="company logo"></li>
-        <li><a href="#footer">contact us</a></li>
-      </ul>
-    </nav>
     <h1 class='headers'>{{greeting}}</h1>
     <h2 class='headers'>welcome to your to-do list</h2>
     <h3 class='headers'>{{current_date}} | {{current_time}}</h3>
@@ -18,7 +12,7 @@
 
 
   <form action="/addtask">
-    <input type="submit" value="add new task" />
+    <input type="submit" value="Add new task" class='add-task-button' />
   </form>
 
 
@@ -28,12 +22,6 @@
   </span>
 </main>
 
-<footer>
-  <h4>Contact Us</h4>
-  <p>81 Newgate St, London EC1A 7AJ</p>
-  <p>01234 567 890</p>
-  <p>email@taskify.com</p>
-</footer>
 
 
 </body>
@@ -52,35 +40,30 @@
         <div id='list-tasks'>
         <ul>
         <li>
-        ID: ${todo.id}
-        <br/>
-
-        Title : ${todo.title}
-        <br/>
-
-           Description :  ${todo.description}
-          <br/>
-          important : ${todo.important}
-          <br/>
-
-          status :
+          <!--
+        <p><span>ID: </span> ${todo.id}</p>
+        -->
+        <p><span>Title: </span>${todo.title}</p>
+        <p><span>Description: </span>${todo.description}</p>
+        <p><span>Important? </span> ${todo.important}</p>
+        <!--Status:
         ${todo.status}
-        <br/>
-
-        date:
-        ${todo.data}
+        <br/>-->
+        <p><span>Due date: </span> ${todo.data}</p>
 </li>
 
         </ul>
+        <form action="/update" method="POST" >
+        <button type="submit" id="update" name="update" value=${todo.id}> Update </button>
+        </form>
+
         <form action="/" method="POST" >
-        <button type="submit" name="delete" value=${todo.id}> Delete</button>
+        <button type="submit" id="delete" name="delete" value=${todo.id}> Delete</button>
          </form>
 
-         </div>
-         <form action="/update" method="POST" > 
-         <button type="submit" name="update" value=${todo.id}> Update </button>
-         </form>
 
+
+</div>
         `;
       });
       document.getElementById('listtasks').innerHTML = task

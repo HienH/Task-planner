@@ -1,29 +1,25 @@
-<!Doctype <!DOCTYPE html>
-<html>
+{% extends 'layout.html'%}
 
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
-</head>
+
+{% block title %} Add New Task {% endblock %}
+
+{% block content %}
+
+<h1>add a new task</h1>
 
 <body>
-    <form method="post" action="/complete">
-        Task title:
+    <form method="post" action="/complete" id='add-task-form'>
+        <label for="task_title">Title</label>
         <input type="text" name="task_title" value="">
-        Task Description:
+        <label for="description">Description:</label>
         <input type="text" name="description" value="">
-        Importance:
+        <label for="checkbox">Important?</label>
         <input type="checkbox" name="checkbox" value="checked">
-        Due Date:
+        <label for="date">Due Date:</label>
         <input type="date" name="date">
-        <input type="submit" value="Add task">
+        <input type="submit" value="Add task" class='add-task-button'>
+        <button type="button" name="home" class="home-button">See all tasks</button>
     </form>
 
 
-</body>
-
-</html>
+{% endblock %}
