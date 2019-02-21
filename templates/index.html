@@ -2,10 +2,9 @@
 {% block title %}Taskify{% endblock %}
 {% block content %}
 
-<body>
   <header>
     <h1 class='headers'>{{greeting}}</h1>
-    <h2 class='headers'>welcome to your to-do list</h2>
+    <h2 class='headers'>welcome to taskify</h2>
     <h3 class='headers'>{{current_date}} | {{current_time}}</h3>
   </header>
 <main>
@@ -24,7 +23,7 @@
 
 
 
-</body>
+
 
 <script type="text/javascript">
   url = 'http://127.0.0.1:5000/todos'
@@ -66,8 +65,14 @@
 </div>
         `;
       });
-      document.getElementById('listtasks').innerHTML = task
+      document.getElementById('listtasks').innerHTML = task;
+      if (task.length == 0) {
+        let empty_message = 'Hooray! Your to-do list is empty.';
+        document.getElementById('listtasks').innerHTML = empty_message;
+      }
+
     })
 </script>
+
 
 {% endblock %}

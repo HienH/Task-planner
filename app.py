@@ -30,6 +30,15 @@ def index():
 
 @app.route("/", methods=["GET","POST"])
 def addtasks():
+    now = datetime.datetime.now()
+    current_date = now.strftime("%d-%m-%Y")
+    current_time = now.strftime("%H:%M")
+    if now.hour < 12:
+        greeting = 'good morning'
+    elif now.hour > 12 and now.hour < 17:
+        greeting = 'good afternoon'
+    else:
+        greeting = 'hello'
     if request.method == 'GET':
       return render_template('index.html', title='todoss', **locals())
 
@@ -69,6 +78,15 @@ def addtask():
     date = request.form["date"]
     cursor.execute('INSERT INTO todos(title, description, important, status, date) VALUES(?,?,?,?,?)',( title, description, important,status,date))
     conn.commit()
+    now = datetime.datetime.now()
+    current_date = now.strftime("%d-%m-%Y")
+    current_time = now.strftime("%H:%M")
+    if now.hour < 12:
+        greeting = 'good morning'
+    elif now.hour > 12 and now.hour < 17:
+        greeting = 'good afternoon'
+    else:
+        greeting = 'hello'
     return render_template('complete.html', **locals())
 
 
