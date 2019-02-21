@@ -1,0 +1,86 @@
+{% extends 'layout.html'%}
+
+
+{% block title %} Update the {% endblock %}
+
+{% block content %}
+
+<h1>Update your task</h1>
+
+
+<h2>Previous task: </h2>
+<span id='listtasks'>
+</span>
+</main>
+
+
+
+
+
+<script type="text/javascript">
+url = 'http://127.0.0.1:5000/todos'
+fetch(url)
+  .then(response => response.json())
+  .then((data) => {
+    console.log(data)
+
+    let task = ''
+    data.forEach((todo) => {
+      task +=
+        `
+      <div id='list-tasks'>
+      <ul>
+      <li>
+        <!--
+      <p><span>ID: </span> ${todo.id}</p>
+      -->
+      <p><span>Title: </span>${todo.title}</p>
+      <p><span>Description: </span>${todo.description}</p>
+      <p><span>Important? </span> ${todo.important}</p>
+      <!--Status:
+      ${todo.status}
+      <br/>-->
+      <p><span>Due date: </span> ${todo.data}</p>
+</li>
+
+      </ul>
+      <form action="/update" method="POST" >
+      <button type="submit" id="update" name="update" value=${todo.id}> Update </button>
+      </form>
+
+      <form action="/" method="POST" >
+      <button type="submit" id="delete" name="delete" value=${todo.id}> Delete</button>
+       </form>
+
+
+
+</div>
+      `;
+    });
+    document.getElementById('listtasks').innerHTML = task;
+    if (task.length == 0) {
+      let empty_message = 'Hooray! Your to-do list is empty.';
+      document.getElementById('listtasks').innerHTML = empty_message;
+    }
+
+  })
+</script>
+
+
+
+<body>
+    <form method="post" action="/complete" id='add-task-form'>
+        <label for="task_title">Title</label>
+        <input type="text" name="task_title" value="">
+        <label for="description">Description:</label>
+        <input type="text" name="description" value="">
+        <label for="checkbox">Important?</label>
+        <input type="checkbox" name="checkbox" value="checked" class="checkbox">
+        <label for="date">Due Date:</label>
+        <input type="date" name="date">
+        <input type="submit" value="Add task" id="add-task">
+        <button type="button" name="home" class="home-button">See all tasks</button>
+    </form>
+
+
+{% endblock %}
