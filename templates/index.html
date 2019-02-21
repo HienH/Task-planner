@@ -75,7 +75,11 @@
         <form action="/" method="POST" >
         <button type="submit" name="delete" value=${todo.id}> Delete</button>
          </form>
+
          </div>
+         <form action="/update" method="POST" > 
+         <button type="submit" name="update" value=${todo.id}> Update </button>
+         </form>
 
         `;
       });

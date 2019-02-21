@@ -94,17 +94,20 @@ def all_todo():
    return jsonify(jsondict)
 
 
-#@app.route("/update", methods = ["POST"])
-#def update():
-#    id = request.form['hello'].value
-#    return redirect("/")
+@app.route("/update", methods = ["POST"])
+def update():
+    id = request.form['update']
+    return redirect(url_for('update/<int:id', id=id))
 
 
 
 #@app.route('/update/<int:id>', methods=['GET', 'POST'])
 #def update_todo():
 #    return render_template('update.html')
-#
+
+@app.route('/update/<int:id>', methods=['GET', 'POST'])
+def update_todo():
+    return render_template('update.html')
 
 if __name__ == '__main__':
     app.run(debug =True)
