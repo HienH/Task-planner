@@ -9,13 +9,14 @@
 
 <body>
   {{id}}
+
   <h1>hello</h1>
   <script type="text/javascript">
-    url = 'http://127.0.0.1:5000/update/' + '{{id}}'
-
-    // fetch(url)
-    //   .then(response => response.json())
-    //   .then((data) => {
-    //       console.log(data)
+    url1 = 'http://127.0.0.1:5000/' + '{{url}}'
+    console.log(url1)
+    fetch(url1)
+      .then(response => response.json())
+      .then((data) => {
+          console.log(data)
   </script>
   {% endblock %}

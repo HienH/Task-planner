@@ -103,12 +103,19 @@ def all_todo():
    return jsonify(jsondict)
 
 
+##
 @app.route("/update", methods = ["POST"])
 def update():
     id = request.form['update']
-
+    url = 'update/'+id
     return render_template ('add_data_update.html',**locals())
 
+
+#@app.route("/update", methods = ["POST"])
+#def update():
+#    id = str(request.form['update'])
+#    url = '127.0.0.1:5000/update/'+str(id)
+#    return redirect(url)
 
 @app.route('/update/<int:id>', methods=['GET'])
 def update_todo(id):
@@ -128,7 +135,6 @@ def update_todo(id):
             }
 
        jsondict.append(todo)
-   conn.close()
    return jsonify(jsondict)
 
 
