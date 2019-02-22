@@ -18,16 +18,16 @@
 
 
 <script type="text/javascript">
-url = 'http://127.0.0.1:5000/todos'
-fetch(url)
-  .then(response => response.json())
-  .then((data) => {
-    console.log(data)
+  url = 'http://127.0.0.1:50   . 00/todos'
+  fetch(url)
+    .then(response => response.json())
+    .then((data) => {
+      console.log(data)
 
-    let task = ''
-    data.forEach((todo) => {
-      task +=
-        `
+      let task = ''
+      data.forEach((todo) => {
+        task +=
+          `
       <div id='list-tasks'>
       <ul>
       <li>
@@ -48,31 +48,31 @@ fetch(url)
 
 </div>
       `;
-    });
-    document.getElementById('listtasks').innerHTML = task;
-    if (task.length == 0) {
-      let empty_message = 'Hooray! Your to-do list is empty.';
-      document.getElementById('listtasks').innerHTML = empty_message;
-    }
+      });
+      document.getElementById('listtasks').innerHTML = task;
+      if (task.length == 0) {
+        let empty_message = 'Hooray! Your to-do list is empty.';
+        document.getElementById('listtasks').innerHTML = empty_message;
+      }
 
-  })
+    })
 </script>
 
 
 
 <body>
-    <form method="post" action="/complete" id='add-task-form'>
-        <label for="task_title">Title</label>
-        <input type="text" name="task_title" value="">
-        <label for="description">Description:</label>
-        <input type="text" name="description" value="">
-        <label for="checkbox">Important?</label>
-        <input type="checkbox" name="checkbox" value="checked" class="checkbox">
-        <label for="date">Due Date:</label>
-        <input type="date" name="date">
-        <input type="submit" value="Add task" id="add-task">
-        <button type="button" name="home" class="home-button">See all tasks</button>
-    </form>
+  <form method="post" action="/complete" id='add-task-form'>
+    <label for="task_title">Title</label>
+    <input type="text" name="task_title" value="">
+    <label for="description">Description:</label>
+    <input type="text" name="description" value="">
+    <label for="checkbox">Important?</label>
+    <input type="checkbox" name="checkbox" value="checked" class="checkbox">
+    <label for="date">Due Date:</label>
+    <input type="date" name="date">
+    <input type="submit" value="Add task" id="add-task">
+    <button type="button" name="home" class="home-button">See all tasks</button>
+  </form>
 
 
-{% endblock %}
+  {% endblock %}

@@ -117,24 +117,24 @@ def update():
 #    url = '127.0.0.1:5000/update/'+str(id)
 #    return redirect(url)
     
-@app.route('/update_todo/<int:id>', methods=['GET'])
+@app.route('/update_todo', methods=['GET'])
 def update_todos():
-    conn = getDb()
-    cursor = conn.cursor()
-    query = cursor.execute("SELECT * FROM todos WHERE ID = ?",(id,))
-    results = query.fetchall()
-    
-    title=request.form["update_task_title"]
-    description=request.form["update_description"]
-    result = request.form.getlist("checkbox1")
-    if result != []:
-        result = 'Yes'
-    else:
-        result= 'No'
-    important = result
-    status = 0
-    date = request.form["update_date"]
-    return render_template('index.html', title='All todos', **locals())
+#    conn = getDb()
+#    cursor = conn.cursor()
+#    query = cursor.execute("SELECT * FROM todos WHERE ID = ?",(id,))
+#    results = query.fetchall()
+#    
+#    title=request.form["update_task_title"]
+#    description=request.form["update_description"]
+#    result = request.form.getlist("checkbox1")
+#    if result != []:
+#        result = 'Yes'
+#    else:
+#        result= 'No'
+#    important = result
+#    status = 0
+#    date = request.form["update_date"]
+    return render_template('complete_update.html', title='All todos', **locals())
 
     
 
