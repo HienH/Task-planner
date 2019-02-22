@@ -30,8 +30,6 @@
   fetch(url)
     .then(response => response.json())
     .then((data) => {
-      console.log(data)
-
       let task = ''
       data.forEach((todo) => {
         task +=
