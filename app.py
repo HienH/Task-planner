@@ -23,7 +23,7 @@ def addtasks():
     elif now.hour > 12 and now.hour < 17:
         greeting = 'good afternoon'
     else:
-        greeting = 'hello'
+        greeting = 'Hello'
     if request.method == 'GET':
         
       return render_template('index.html', title='todoss', **locals())
