@@ -13,21 +13,6 @@ from flask import Flask,render_template,request,jsonify,url_for, flash, redirect
 from db import *
 app = Flask(__name__)
 
-#@app.route("/")
-#@app.route("/home")
-#def index():
-#    now = datetime.datetime.now()
-#    current_date = now.strftime("%d-%m-%Y")
-#    current_time = now.strftime("%H:%M")
-#    if now.hour < 12:
-#        greeting = 'good morning'
-#    elif now.hour > 12 and now.hour < 17:
-#        greeting = 'good afternoon'
-#    else:
-#        greeting = 'hello'
-#    return render_template('index.html', title='home', **locals())
-
-
 @app.route("/", methods=["GET","POST"])
 def addtasks():
     now = datetime.datetime.now()
@@ -121,17 +106,31 @@ def all_todo():
 @app.route("/update", methods = ["POST"])
 def update():
     id = request.form['update']
-    return redirect(url_for('update/<int:id', id=id))
+
+    return render_template ('add_data_update.html',**locals())
 
 
+@app.route('/update/<int:id>', methods=['GET'])
+def update_todo(id):
+   conn = getDb()
+   cursor = conn.cursor()
+   query = cursor.execute("SELECT * FROM todos WHERE ID = ?",(id,))
+   results = query.fetchall()
+   jsondict = []
+   for row in results:
+       todo = {
+            'id' : row[0],
+            'title' : row[1],
+            'description' : row[2],
+            'important' : row[3],
+            'status' : row[4],
+            'data' : row[5]
+            }
 
-#@app.route('/update/<int:id>', methods=['GET', 'POST'])
-#def update_todo():
-#    return render_template('update.html')
+       jsondict.append(todo)
+   conn.close()
+   return jsonify(jsondict)
 
-@app.route('/update/<int:id>', methods=['GET', 'POST'])
-def update_todo():
-    return render_template('update.html')
 
 if __name__ == '__main__':
     app.run(debug =True)

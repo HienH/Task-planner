@@ -11,6 +11,8 @@
 </head>
 
 <body>
+{% block content %}
+<h1>{{id}}</h1>
   <h1>update</h1>
   <!-- <form method="post" action="/update">
     Task title:
@@ -23,7 +25,7 @@
     <input type="date" name="date">
     <input type="submit" value="Add task">
   </form> -->
-
+{%endblock content%}
 
 </body>
 
