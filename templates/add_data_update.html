@@ -5,11 +5,12 @@
 
 {% block content %}
 
-<h1>Add a new task</h1>
+<h1>Update a new task</h1>
+<span id='listtask1'>
+</span>
 
 <body>
   {{id}}
-
   <h1>hello</h1>
   <script type="text/javascript">
     url1 = 'http://127.0.0.1:5000/' + '{{url}}'
@@ -18,6 +19,26 @@
       .then(response => response.json())
       .then((data) => {
         console.log(data)
+        let task1 = ''
+        data.forEach((todo) => {
+          task1 +=
+            `
+            <form method="post1" action="/update_todo" id='add-task-form'>
+    <label for="task_title">Title</label>
+    <input type="text" name="update_task_title" value="" placeholder = '${todo.title}'>
+    <label for="description">Description:</label>
+    <input type="text" name="update_description" value="" placeholder = '${todo.description}'>
+    <label for="checkbox">Important?</label>
+        <input type="checkbox" name="checkbox1" value="checked" class="checkbox">
+    <label for="update_date">Due Date:</label>
+        <input type="date" name="date">
+     <input type="submit" value="Update task" id="update-task1">
+    </form>
+`;
+
+
+        })
+        document.getElementById('listtask1').innerHTML = task1;
       })
   </script>
   {% endblock %}
